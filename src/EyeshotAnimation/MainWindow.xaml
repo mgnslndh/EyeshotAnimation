@@ -9,37 +9,48 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ddes:Model Name="EyeshotModel" LayoutMode="SingleViewport" ShowFps="True" Renderer="Direct3D">
-            <ddes:Model.Viewports>
-                <ddes:Viewport InitialView="Top" DisplayMode="Wireframe">
-                    <ddes:Viewport.OriginSymbols>
-                        <ddes:OriginSymbol Lighting="False"/>
-                    </ddes:Viewport.OriginSymbols>
-                    <ddes:Viewport.CoordinateSystemIcon>
-                        <ddes:CoordinateSystemIcon Lighting="False"/>
-                    </ddes:Viewport.CoordinateSystemIcon>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="4">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="4"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Name="ToggleAnimation" Content="Start Animation" Click="ToggleAnimation_Click"/>
+                <Button Name="ToggleDrawing" Content="Hide Drawing" Click="ToggleDrawing_Click"/>
+            </StackPanel>
+            <ddes:Model Name="EyeshotModel" LayoutMode="SingleViewport" ShowFps="True" Renderer="Native">
+                <ddes:Model.Viewports>
+                    <ddes:Viewport InitialView="Top" DisplayMode="Wireframe">
+                        <ddes:Viewport.OriginSymbols>
+                            <ddes:OriginSymbol Lighting="False"/>
+                        </ddes:Viewport.OriginSymbols>
+                        <ddes:Viewport.CoordinateSystemIcon>
+                            <ddes:CoordinateSystemIcon Lighting="False"/>
+                        </ddes:Viewport.CoordinateSystemIcon>
 
-                    <ddes:Viewport.Background>
-                        <ddgr:BackgroundSettings StyleMode="Solid"  TopColor="WhiteSmoke"/>
-                    </ddes:Viewport.Background>
-                    <ddes:Viewport.Grids>
-                        <ddes:Grid Step="10" Lighting="False"/>
-                    </ddes:Viewport.Grids>
-                    <ddes:Viewport.ToolBars>
-                        <ddes:ToolBar Position="HorizontalTopCenter">
-                            <ddes:ToolBar.Buttons>
-                                <ddes:HomeToolBarButton/>
-                                <ddes:MagnifyingGlassToolBarButton/>
-                                <ddes:ZoomWindowToolBarButton/>
-                                <ddes:ZoomToolBarButton/>
-                                <ddes:PanToolBarButton/>
-                                <ddes:RotateToolBarButton/>
-                                <ddes:ZoomFitToolBarButton/>
-                            </ddes:ToolBar.Buttons>
-                        </ddes:ToolBar>
-                    </ddes:Viewport.ToolBars>
-                </ddes:Viewport>
-            </ddes:Model.Viewports>
-        </ddes:Model>
+                        <ddes:Viewport.Background>
+                            <ddgr:BackgroundSettings StyleMode="Solid"  TopColor="WhiteSmoke"/>
+                        </ddes:Viewport.Background>
+                        <ddes:Viewport.Grids>
+                            <ddes:Grid Step="10" Lighting="False"/>
+                        </ddes:Viewport.Grids>
+                        <ddes:Viewport.ToolBars>
+                            <ddes:ToolBar Position="HorizontalTopCenter">
+                                <ddes:ToolBar.Buttons>
+                                    <ddes:HomeToolBarButton/>
+                                    <ddes:MagnifyingGlassToolBarButton/>
+                                    <ddes:ZoomWindowToolBarButton/>
+                                    <ddes:ZoomToolBarButton/>
+                                    <ddes:PanToolBarButton/>
+                                    <ddes:RotateToolBarButton/>
+                                    <ddes:ZoomFitToolBarButton/>
+                                </ddes:ToolBar.Buttons>
+                            </ddes:ToolBar>
+                        </ddes:Viewport.ToolBars>
+                    </ddes:Viewport>
+                </ddes:Model.Viewports>
+            </ddes:Model>
+        </DockPanel>
     </Grid>
 </Window>

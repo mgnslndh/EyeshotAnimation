@@ -1,4 +1,4 @@
-﻿using devDept.Eyeshot;
+using devDept.Eyeshot;
 using devDept.Eyeshot.Entities;
 using devDept.Eyeshot.Translators;
 using devDept.Geometry;
@@ -56,7 +56,7 @@ namespace EyeshotAnimation
             {
                 CreateVehicle(index);
             }            
-            EyeshotModel.StartAnimation(25);
+            
             EyeshotModel.ZoomFit();
             EyeshotModel.Invalidate();
             base.OnContentRendered(e);
@@ -112,6 +112,11 @@ namespace EyeshotAnimation
 
                 var d = (elapsedTime / 1000) * direction;                
 
+                if(frameNumber == 1)
+                {
+                    pos = center;
+                }
+
                 pos = pos + d;
                 
                 // Change direction when we leave the bounds
@@ -145,6 +150,38 @@ namespace EyeshotAnimation
             {
                 // return true to avoid undesired clipping
                 return true;
+            }
+        }
+
+        private void ToggleAnimation_Click(object sender, RoutedEventArgs e)
+        {
+            if(EyeshotModel.IsAnimationRunning)
+            {
+                EyeshotModel.StopAnimation();
+                ToggleAnimation.Content = "Start Animation";
+            }
+            else
+            {
+                EyeshotModel.StartAnimation(25);
+                ToggleAnimation.Content = "Stop Animation";
+            }
+        }
+
+        private void ToggleDrawing_Click(object sender, RoutedEventArgs e)
+        {
+            var layer = EyeshotModel.Layers["DWG"];
+
+            if (layer.Visible)
+            {
+                layer.Visible = false;
+                ToggleDrawing.Content = "Show Drawing";
+                EyeshotModel.Invalidate();
+            }
+            else
+            {
+                layer.Visible = true;
+                ToggleDrawing.Content = "Hide Drawing";
+                EyeshotModel.Invalidate();
             }
         }
     }
